@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom";
+import PrivateRoute from "./app/routerUtils/PrivateRoute";
+import Dashboard from "./app/components/dashboard/Dashboard";
+import Login from "./app/components/login/Login";
+import "./App.css";
+import Navbar from "./app/components/navbar/Navbar";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+
+      <Routes>
+        <Route path="/login" element={<Login />} />
+
+        {/* the PrivateRoute restrict the Routes to work just if the user is logged in*/}
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route path="/*" element={<Navigate replace to="/dashboard" />} />
+        </Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
