@@ -2,8 +2,8 @@ import { Navigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
 import { loggedInUserInfo, reset } from "../../store/slices/authSlice";
 import { useEffect, useState } from "react";
-import LoginMode from "./LoginMode";
-import NewUserMode from "./NewUserMode";
+import LoginForm from "./LoginForm";
+import LoginNewUser from "./LoginNewUser";
 
 const Login = () => {
   const [newUserMode, setNewUserMode] = useState<boolean>(false);
@@ -19,9 +19,9 @@ const Login = () => {
   return loggedInUser.logged ? (
     <Navigate replace to="/dashboard" />
   ) : !newUserMode ? (
-    <LoginMode setNewUserMode={setNewUserMode} />
+    <LoginForm setNewUserMode={setNewUserMode} />
   ) : (
-    <NewUserMode setNewUserMode={setNewUserMode} />
+    <LoginNewUser setNewUserMode={setNewUserMode} />
   );
 };
 export default Login;

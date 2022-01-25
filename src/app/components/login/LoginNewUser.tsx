@@ -13,18 +13,18 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
-import { loggedInUserInfo, login, reset } from "../../store/slices/authSlice";
+import { add, loggedInUserInfo, reset } from "../../store/slices/authSlice";
 
 const theme = createTheme();
 
-interface ILoginMode {
+interface ILoginNewUser {
   setNewUserMode: (val: boolean) => void;
 }
 
-const LoginMode = (props: ILoginMode) => {
+const LoginNewUser = (props: ILoginNewUser) => {
   const { setNewUserMode } = props;
 
-  const { isFail, error } = useAppSelector(loggedInUserInfo);
+  const { isPass, isFail, error } = useAppSelector(loggedInUserInfo);
   const dispatch = useAppDispatch();
 
   if (isFail) {
@@ -32,9 +32,14 @@ const LoginMode = (props: ILoginMode) => {
       dispatch(reset());
     }, 3000);
   }
+  if (isPass) {
+    setNewUserMode(false);
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    console.log(event);
 
     const providedUsername = new FormData(event.currentTarget)
       .get("username")
@@ -49,7 +54,7 @@ const LoginMode = (props: ILoginMode) => {
 
     // Store the login user information
     dispatch(
-      login({
+      add({
         username: providedUsername,
         password: providedPassword,
       })
@@ -72,7 +77,7 @@ const LoginMode = (props: ILoginMode) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            New User
           </Typography>
           <Box
             component="form"
@@ -85,7 +90,7 @@ const LoginMode = (props: ILoginMode) => {
               required
               fullWidth
               id="username"
-              label="Username"
+              label="New Username"
               name="username"
               autoFocus
             />
@@ -94,7 +99,7 @@ const LoginMode = (props: ILoginMode) => {
               required
               fullWidth
               id="password"
-              label="Password"
+              label="New Password"
               name="password"
             />
             {isFail && (
@@ -109,13 +114,13 @@ const LoginMode = (props: ILoginMode) => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Creat User
               </Button>
             )}
             <i>
-              Not member yet? {" "}
-              <Link href="#" onClick={() => setNewUserMode(true)}>
-                create user
+              Return to {" "}
+              <Link href="#" onClick={() => setNewUserMode(false)}>
+                Login
               </Link>
             </i>
           </Box>
@@ -124,4 +129,4 @@ const LoginMode = (props: ILoginMode) => {
     </ThemeProvider>
   );
 };
-export default LoginMode;
+export default LoginNewUser;

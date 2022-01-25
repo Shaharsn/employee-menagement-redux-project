@@ -28,6 +28,7 @@ const ProjectNewEditForm = (props: IProjectNewEditForm) => {
     };
 
     dispatch(addProject(newProj));
+    close();
   };
 
   const onSaveUpdate = () => {
@@ -38,6 +39,7 @@ const ProjectNewEditForm = (props: IProjectNewEditForm) => {
     };
 
     dispatch(updateProject(updatedProj));
+    close();
   };
 
   return (

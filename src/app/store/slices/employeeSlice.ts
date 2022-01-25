@@ -99,7 +99,7 @@ const EmployeeSlice = createSlice({
       });
     },
     deleteEmployee: (state, action: PayloadAction<string>) => {
-      state.employees.filter((emp) => emp.id !== action.payload);
+      state.employees = [...state.employees.filter((emp) => emp.id !== action.payload)];
     },
   },
 });

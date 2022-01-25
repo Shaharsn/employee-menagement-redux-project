@@ -95,7 +95,7 @@ const ProjectSlice = createSlice({
       });
     },
     deleteProject: (state, action: PayloadAction<string>) => {
-      state.projects.filter((proj) => proj.id !== action.payload);
+      state.projects = [...state.projects.filter((proj) => proj.id !== action.payload)];
     },
   },
 });

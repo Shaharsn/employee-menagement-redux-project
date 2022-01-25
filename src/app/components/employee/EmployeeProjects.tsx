@@ -29,25 +29,27 @@ const EmployeeProjects = (props: IEmployeeProjectsProps) => {
   const dispatch = useAppDispatch();
   const projectState = useAppSelector(state);
 
-  const employeeProjects: string[] =
-    employee.projects?.map((proj) => {
-      return proj.id;
-    }) || [];
+  useEffect(() => {
+    const employeeProjects: string[] =
+      employee.projects?.map((proj) => {
+        return proj.id;
+      }) || [];
 
-  const allProjects: ICheckboxProjectList[] = projectState.projects.map(
-    (proj) => {
-      return { project: proj, isChecked: false };
-    }
-  );
+    const allProjects: ICheckboxProjectList[] = projectState.projects.map(
+      (proj) => {
+        return { project: proj, isChecked: false };
+      }
+    );
 
-  // Checking all the project that the Employee already assigned to.
-  allProjects.forEach((proj) => {
-    if (employeeProjects.includes(proj.project.id)) {
-      proj.isChecked = true;
-    }
-  });
+    // Checking all the project that the Employee already assigned to.
+    allProjects.forEach((proj) => {
+      if (employeeProjects.includes(proj.project.id)) {
+        proj.isChecked = true;
+      }
+    });
 
-  setCheckboxProjectList([...allProjects]);
+    setCheckboxProjectList([...allProjects]);
+  }, []);
 
   const handleToggle = (projId: string) => () => {
     const updatedProjects = [...checkboxProjectList];
@@ -92,6 +94,7 @@ const EmployeeProjects = (props: IEmployeeProjectsProps) => {
         projects: checkedProjects,
       })
     );
+    close();
   };
 
   return (

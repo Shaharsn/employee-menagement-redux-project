@@ -62,7 +62,9 @@ const AuthSlice = createSlice({
   initialState: initialAuthState,
   reducers: {
     reset: (state) => {
-      resetState(state);
+      state.isPass = false;
+      state.isFail = false;
+      state.error = "";
     },
     add: (state, action: PayloadAction<IUserAuth>) => {
       if (

@@ -29,25 +29,27 @@ const ProjectEmployees = (props: IProjectEmployeesProps) => {
   const dispatch = useAppDispatch();
   const employeeState = useAppSelector(empState);
 
-  const projectEmployees: string[] =
-    project.employees?.map((emp) => {
-      return emp.id;
-    }) || [];
+  useEffect(() => {
+    const projectEmployees: string[] =
+      project.employees?.map((emp) => {
+        return emp.id;
+      }) || [];
 
-  const allEmployees: ICheckboxEmployeeList[] = employeeState.employees.map(
-    (emp) => {
-      return { employee: emp, isChecked: false };
-    }
-  );
+    const allEmployees: ICheckboxEmployeeList[] = employeeState.employees.map(
+      (emp) => {
+        return { employee: emp, isChecked: false };
+      }
+    );
 
-  // Checking all the employees that the project already assigned to.
-  allEmployees.forEach((emp) => {
-    if (projectEmployees.includes(emp.employee.id)) {
-      emp.isChecked = true;
-    }
-  });
+    // Checking all the employees that the project already assigned to.
+    allEmployees.forEach((emp) => {
+      if (projectEmployees.includes(emp.employee.id)) {
+        emp.isChecked = true;
+      }
+    });
 
-  setCheckboxEmployeeList([...allEmployees]);
+    setCheckboxEmployeeList([...allEmployees]);
+  }, []);
 
   const handleToggle = (projId: string) => () => {
     const updatedEmployees = [...checkboxEmployeeList];
@@ -92,6 +94,7 @@ const ProjectEmployees = (props: IProjectEmployeesProps) => {
         employees: checkedEmployees,
       })
     );
+    close();
   };
 
   return (

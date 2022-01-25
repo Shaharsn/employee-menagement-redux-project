@@ -13,36 +13,28 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
-import { add, loggedInUserInfo, reset } from "../../store/slices/authSlice";
+import { loggedInUserInfo, login, reset } from "../../store/slices/authSlice";
 
 const theme = createTheme();
 
-interface INewUserMode {
+interface ILoginForm {
   setNewUserMode: (val: boolean) => void;
 }
 
-const NewUserMode = (props: INewUserMode) => {
+const LoginForm = (props: ILoginForm) => {
   const { setNewUserMode } = props;
 
-  const { isPass, isFail, error } = useAppSelector(loggedInUserInfo);
+  const { isFail, error } = useAppSelector(loggedInUserInfo);
   const dispatch = useAppDispatch();
-
-  console.log('isPass = ' + isPass);
-  console.log('isFail = ' + isFail);
 
   if (isFail) {
     setTimeout(() => {
       dispatch(reset());
     }, 3000);
   }
-  if (isPass) {
-    setNewUserMode(false);
-  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log(event);
 
     const providedUsername = new FormData(event.currentTarget)
       .get("username")
@@ -57,7 +49,7 @@ const NewUserMode = (props: INewUserMode) => {
 
     // Store the login user information
     dispatch(
-      add({
+      login({
         username: providedUsername,
         password: providedPassword,
       })
@@ -80,7 +72,7 @@ const NewUserMode = (props: INewUserMode) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            New User
+            Sign in
           </Typography>
           <Box
             component="form"
@@ -93,7 +85,7 @@ const NewUserMode = (props: INewUserMode) => {
               required
               fullWidth
               id="username"
-              label="New Username"
+              label="Username"
               name="username"
               autoFocus
             />
@@ -102,7 +94,7 @@ const NewUserMode = (props: INewUserMode) => {
               required
               fullWidth
               id="password"
-              label="New Password"
+              label="Password"
               name="password"
             />
             {isFail && (
@@ -117,13 +109,13 @@ const NewUserMode = (props: INewUserMode) => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Creat User
+                Sign In
               </Button>
             )}
             <i>
-              Return to {" "}
-              <Link href="#" onClick={() => setNewUserMode(false)}>
-                Login
+              Not member yet? {" "}
+              <Link href="#" onClick={() => setNewUserMode(true)}>
+                create user
               </Link>
             </i>
           </Box>
@@ -132,4 +124,4 @@ const NewUserMode = (props: INewUserMode) => {
     </ThemeProvider>
   );
 };
-export default NewUserMode;
+export default LoginForm;

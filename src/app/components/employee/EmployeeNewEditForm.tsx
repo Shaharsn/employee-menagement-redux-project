@@ -45,6 +45,7 @@ const EmployeeNewEditForm = (props: IEmployeeNewEditFormProps) => {
     };
 
     dispatch(addEmployee(newEmp));
+    close();
   };
 
   const onSaveUpdate = () => {
@@ -56,6 +57,7 @@ const EmployeeNewEditForm = (props: IEmployeeNewEditFormProps) => {
     };
 
     dispatch(updateEmployee(updatedEmp));
+    close();
   };
 
   return (
