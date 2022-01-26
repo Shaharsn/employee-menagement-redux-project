@@ -41,4 +41,15 @@ export const IconButton = styled("span")<{ bg?: string; color?: string }>`
     opacity: 0.8;
     transform: scale(0.95);
   }
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    flex-direction: column;
+    margin: 5px auto;
+    height: 25px;
+    width: 25px;
+
+    & > span {
+      margin: 15%;
+    }
+  }
 `;

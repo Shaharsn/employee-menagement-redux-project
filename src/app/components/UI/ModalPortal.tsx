@@ -20,6 +20,7 @@ const ModalPortal = (props: IModalPortalProps) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: width || 400,
+    maxWidth: "90%",
     bgcolor: "white",
     border: "0",
     boxShadow: 24,
