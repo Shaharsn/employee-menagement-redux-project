@@ -1,8 +1,8 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
 import { loggedInUserInfo, login, reset } from "../../store/slices/authSlice";
-import { Label, FormGroup, P, Form } from "../styled/LoginForm";
-import { Button, IconButton } from "../styled/Button";
+import { Label, FormGroup, P, Form, Icon } from "../styled/LoginForm";
+import { Button } from "../styled/Button";
 import { Input } from "../styled/Input";
 import { Alert } from "../styled/Alert";
 
@@ -49,9 +49,9 @@ const LoginForm = (props: ILoginForm) => {
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
-        <IconButton>
+        <Icon>
           <LockOutlinedIcon />
-        </IconButton>
+        </Icon>
         <Label> Sign in</Label>
 
         <Input id="username" name="username" autoFocus placeholder="Username" />
