@@ -3,8 +3,6 @@ import { Modal, Backdrop, Fade, Typography, IconButton } from "@mui/material";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 
-
-
 interface IModalPortalProps {
   header: string;
   children: React.ReactNode;
@@ -23,9 +21,10 @@ const ModalPortal = (props: IModalPortalProps) => {
     transform: "translate(-50%, -50%)",
     width: width || 400,
     bgcolor: "white",
-    border: "2px solid #000",
+    border: "0",
     boxShadow: 24,
     p: 2,
+    borderRadius: 5,
   };
 
   return props.showModal

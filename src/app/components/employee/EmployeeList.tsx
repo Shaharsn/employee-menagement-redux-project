@@ -1,14 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CircularProgress,
-  IconButton,
-} from "@mui/material";
-
 import { Employee } from "../../types/types";
 import EmployeeDataTable from "./EmployeeDataTable";
-import AddIcon from "@mui/icons-material/AddBox";
 import ModalPortal from "../UI/ModalPortal";
 import useModal from "../../hooks/useModal";
 import { useState } from "react";
@@ -17,6 +8,16 @@ import DeleteModal from "../UI/DeleteModal";
 import EmployeeProjects from "./EmployeeProjects";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
 import { deleteEmployee, state } from "../../store/slices/employeeSlice";
+import {
+  Card,
+  CardHeader,
+  CardHeaderTitle,
+  CardHeaderActions,
+  CardBody
+} from "../styled/Card";
+import { IconButton } from "../styled/Button";
+import { PlusOutlined } from "@ant-design/icons";
+
 
 const initEmployee: Employee = {
   id: "-1",
@@ -91,24 +92,24 @@ const EmployeeList = () => {
 
   return (
     <>
-      <Card sx={{ marginTop: ["40px"] }}>
-        <CardHeader
-          title="Employees"
-          action={
-            <IconButton aria-label="settings" onClick={onNew}>
-              <AddIcon />
+      <Card>
+        <CardHeader>
+          <CardHeaderTitle>Employees</CardHeaderTitle>
+          <CardHeaderActions>
+            <IconButton bg="#707070" color="white" onClick={onNew}>
+              <PlusOutlined />
             </IconButton>
-          }
-        />
+          </CardHeaderActions>
+        </CardHeader>
 
-        <CardContent>
+        <CardBody>
           <EmployeeDataTable
             employees={employeeState.employees}
             editEmployee={onEdit}
             deleteEmployee={onDelete}
             showEmployeeProject={onShowEmployeeProject}
           />
-        </CardContent>
+        </CardBody>
       </Card>
 
       <ModalPortal

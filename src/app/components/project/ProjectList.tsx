@@ -1,10 +1,3 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CircularProgress,
-  IconButton,
-} from "@mui/material";
 import { Project } from "../../types/types";
 import ProjectDataTable from "./ProjectDataTable";
 import AddIcon from "@mui/icons-material/AddBox";
@@ -16,6 +9,15 @@ import DeleteModal from "../UI/DeleteModal";
 import ProjectEmployees from "./ProjectEmployees";
 import { state, deleteProject } from "../../store/slices/projectSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderActions,
+  CardHeaderTitle,
+} from "../styled/Card";
+import { IconButton } from "../styled/Button";
+import { PlusOutlined } from "@ant-design/icons";
 
 const initProject: Project = {
   id: "-1",
@@ -89,25 +91,26 @@ const ProjectList = () => {
 
   return (
     <>
-      <Card sx={{ marginTop: ["40px"] }}>
-        <CardHeader
-          title="Projects"
-          action={
-            <IconButton aria-label="settings" onClick={onNew}>
-              <AddIcon />
+      <Card>
+        <CardHeader>
+          <CardHeaderTitle>Employees</CardHeaderTitle>
+          <CardHeaderActions>
+            <IconButton bg="#707070" color="white" onClick={onNew}>
+              <PlusOutlined />
             </IconButton>
-          }
-        />
+          </CardHeaderActions>
+        </CardHeader>
 
-        <CardContent>
+        <CardBody>
           <ProjectDataTable
             projects={projectState.projects}
             editProject={onEdit}
             deleteProject={onDelete}
             showProjectEmployee={onShowProjectEmployee}
           />
-        </CardContent>
+        </CardBody>
       </Card>
+
       <ModalPortal
         header={modalInfo.header}
         showModal={showProjectModal}
