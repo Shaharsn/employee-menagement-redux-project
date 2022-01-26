@@ -93,7 +93,7 @@ const ProjectList = () => {
     <>
       <Card>
         <CardHeader>
-          <CardHeaderTitle>Employees</CardHeaderTitle>
+          <CardHeaderTitle>Projects</CardHeaderTitle>
           <CardHeaderActions>
             <IconButton bg="#707070" color="white" onClick={onNew}>
               <PlusOutlined />

@@ -6,6 +6,10 @@ export const FormGroup = styled("div")`
   display: block;
   max-width: 500px;
   margin: 20px auto;
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    max-width: 90%;
+  }
 `;
 
 export const Label = styled("label")`
