@@ -30,7 +30,7 @@ const App = () => {
           {/* the PrivateRoute restrict the Routes to work just if the user is logged in*/}
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
-
+            <Route path="/" element={<Navigate replace to="/dashboard" />} />
             <Route path="/*" element={<Navigate replace to="/dashboard" />} />
           </Route>
         </Routes>
