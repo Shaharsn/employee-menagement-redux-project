@@ -1,11 +1,11 @@
 import { Project } from "../../types/types";
 import ProjectDataTable from "./ProjectDataTable";
 import AddIcon from "@mui/icons-material/AddBox";
-import ModalPortal from "../UI/ModalPortal";
+import ModalPortal from "../ui/ModalPortal";
 import useModal from "../../hooks/useModal";
 import { useState } from "react";
 import ProjectNewEditForm from "./ProjectNewEditForm";
-import DeleteModal from "../UI/DeleteModal";
+import DeleteModal from "../ui/DeleteModal";
 import ProjectEmployees from "./ProjectEmployees";
 import { state, deleteProject } from "../../store/slices/projectSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";

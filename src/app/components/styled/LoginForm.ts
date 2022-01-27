@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { BgColorProps } from './StyleIntefaces';
 
-export const Form = styled("form")``;
+export const Form = styled.form``;
 
-export const FormGroup = styled("div")`
+export const FormGroup = styled.div`
   display: block;
   max-width: 500px;
   margin: 20px auto;
@@ -12,18 +13,18 @@ export const FormGroup = styled("div")`
   }
 `;
 
-export const Label = styled("label")`
+export const Label = styled.label`
   display: block;
   text-align: center;
   font-weight: 600;
 `;
 
-export const P = styled("p")`
+export const P = styled.p`
   display: block;
   text-align: center;
 `;
 
-export const Icon = styled("span")<{ bg?: string; color?: string }>`
+export const Icon = styled.span<BgColorProps>`
   display: block;
   height: 40px;
   width: 40px;

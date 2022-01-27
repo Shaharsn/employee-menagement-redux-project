@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Card = styled("div")`
+export const Card = styled.div`
   display: block;
   align-items: center;
   background-color: #fff;
@@ -21,7 +21,7 @@ export const Card = styled("div")`
   }
 `;
 
-export const CardHeader = styled("div")`
+export const CardHeader = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
@@ -32,7 +32,7 @@ export const CardHeader = styled("div")`
   }
 `;
 
-export const CardHeaderTitle = styled("label")`
+export const CardHeaderTitle = styled.label`
   padding-left: 20px;
   padding-top: 10px;
   font-size: 26px;
@@ -43,12 +43,12 @@ export const CardHeaderTitle = styled("label")`
   }
 `;
 
-export const CardHeaderActions = styled("div")`
+export const CardHeaderActions = styled.div`
   padding:  5px 10px 0 0;
   text-align: right;
 `;
 
-export const CardBody = styled("div")`
+export const CardBody = styled.div`
   display: block;
   padding: 20px;
   max-height: 400px;

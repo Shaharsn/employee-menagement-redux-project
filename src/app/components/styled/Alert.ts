@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Alert = styled("span")`
+export const Alert = styled.span`
   display: block;
   text-align: center;
   width: 100%;

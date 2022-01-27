@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { BgColorProps } from './StyleIntefaces';
 
-export const Button = styled("button")<{ bg: string; color: string }>`
+export const Button = styled.button<BgColorProps>`
   display: block;
   text-align: center;
   margin: 10px auto;
@@ -21,7 +22,7 @@ export const Button = styled("button")<{ bg: string; color: string }>`
   }
 `;
 
-export const IconButton = styled("span")<{ bg?: string; color?: string }>`
+export const IconButton = styled.span<BgColorProps>`
   display: block;
   height: 40px;
   width: 40px;

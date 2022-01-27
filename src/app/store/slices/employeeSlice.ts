@@ -86,7 +86,7 @@ const EmployeeSlice = createSlice({
 
       state.employees.forEach((emp) => {
         if (!updatedProj.employees?.find((e) => e.id === emp.id)) {
-          emp.projects?.filter((proj) => proj.id !== updatedProj.id);
+          emp.projects = emp.projects?.filter((proj) => proj.id !== updatedProj.id);
         }
 
         if(updatedProj.employees?.find((e) => e.id === emp.id) && !emp.projects?.find((proj) => proj.id === updatedProj.id)) {

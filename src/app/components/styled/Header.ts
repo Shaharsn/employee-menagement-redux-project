@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled("header")`
+export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.colors.header};
   padding: 30px 0;
 `;
 
-export const Nav = styled("nav")`
+export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
 `;
 
-export const Title = styled("div")`
+export const Title = styled.div`
   margin: 0px;
   padding: 0;
   color: white;
@@ -21,7 +21,7 @@ export const Title = styled("div")`
 
 `;
 
-export const RightMenu = styled("div")`
+export const RightMenu = styled.div`
   text-align: right;
   margin-right: 20px;
 

@@ -1,10 +1,10 @@
 import { Employee } from "../../types/types";
 import EmployeeDataTable from "./EmployeeDataTable";
-import ModalPortal from "../UI/ModalPortal";
+import ModalPortal from "../ui/ModalPortal";
 import useModal from "../../hooks/useModal";
 import { useState } from "react";
 import EmployeeNewEditForm from "./EmployeeNewEditForm";
-import DeleteModal from "../UI/DeleteModal";
+import DeleteModal from "../ui/DeleteModal";
 import EmployeeProjects from "./EmployeeProjects";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHooks";
 import { deleteEmployee, state } from "../../store/slices/employeeSlice";
