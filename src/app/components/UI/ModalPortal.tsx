@@ -10,7 +10,7 @@ interface IModalPortalProps {
   width?: number;
   closeModal: () => void;
 }
-
+ 
 const ModalPortal = (props: IModalPortalProps) => {
   const { header, children, showModal, width, closeModal } = props;
 
