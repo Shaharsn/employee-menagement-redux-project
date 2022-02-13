@@ -1,6 +1,5 @@
 import { Project } from "../../types/types";
 import ProjectDataTable from "./ProjectDataTable";
-import AddIcon from "@mui/icons-material/AddBox";
 import ModalPortal from "../ui/ModalPortal";
 import useModal from "../../hooks/useModal";
 import { useState } from "react";
